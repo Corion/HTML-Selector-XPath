@@ -1,5 +1,8 @@
 Revision history for Perl extension HTML::Selector::XPath
 
+0.15 NEXT
+      - Fix bugs in :contains("string") (Aaron Crane)
+
 0.14 Mon Jan 16 22:00:00 GMT 2012
       - Also allow single quotes in attribute expressions,
         as seems to be allowed

@@ -282,6 +282,30 @@ E:contains( "Hello" )
 //E[text()[contains(string(.),"Hello")]]
 ===
 --- selector
+E:contains( "Hello" ).C
+
+--- xpath
+//E[text()[contains(string(.),"Hello")]][contains(concat(' ', @class, ' '), ' C ')]
+===
+--- selector
+E:contains( "Hello" ) .C
+
+--- xpath
+//E[text()[contains(string(.),"Hello")]]//*[contains(concat(' ', @class, ' '), ' C ')]
+===
+--- selector
+F, E:contains( "Hello" )
+
+--- xpath
+//F | //E[text()[contains(string(.),"Hello")]]
+===
+--- selector
+E:contains( "Hello" ), F
+
+--- xpath
+//E[text()[contains(string(.),"Hello")]] | //F
+===
+--- selector
 E ~ F
 --- xpath
 //E/following-sibling::F
