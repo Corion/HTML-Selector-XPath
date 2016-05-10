@@ -28,7 +28,7 @@ my $reg = {
         ( [~|*^\$!]? = ) \s*
         (?: ($ident) | "([^"]*)" | '([^']*)') \s* \] /x,
     badattr => qr/^\[/,
-    attrN   => qr/^:not\((.*?)\)/i, # this should be a parentheses matcher instead of a RE!
+    attrN   => qr/^:not\(/i, # we chop off the closing parenthesis below in the code
     pseudo  => qr/^:([()a-z0-9_+-]+)/i,
     # adjacency/direct descendance
     combinator => qr/^(\s*[>+~\s](?!,))/i,
@@ -97,10 +97,10 @@ sub nth_last_child {
     _generate_child('following', $a, $b);
 }
 
-sub to_xpath {
-    my $self = shift;
-    my $rule = $self->{expression} or return;
-    my %parms = @_;
+# A hacky recursive descent
+# Only descends for :not(...)
+sub consume {
+    my ($self, $rule, %parms) = @_;
     my $root = $parms{root} || '/';
 
     my @parts = ("$root/");
@@ -165,18 +165,24 @@ sub to_xpath {
 
         # Match negation
         if ($rule =~ s/$reg->{attrN}//) {
-            my $sub_rule = $1;
-            if ($sub_rule =~ s/$reg->{attr2}//) {
+            # Now we parse the rest, and after parsing the subexpression
+            # has stopped, we must find a matching closing parenthesis:
+            if ($rule =~ s/$reg->{attr2}//) {
                 push @parts, "[not(", convert_attribute_match( $1, $2, $^N ), ")]";
-            } elsif ($sub_rule =~ s/$reg->{attr1}//) {
+            } elsif ($rule =~ s/$reg->{attr1}//) {
                 push @parts, "[not(\@$1)]";
-            } elsif ($sub_rule =~ /$reg->{badattr}/) {
-                Carp::croak "Invalid negated attribute-value selector ':not($sub_rule)'";
+            } elsif ($rule =~ /$reg->{badattr}/) {
+                Carp::croak "Invalid negated attribute-value selector ':not($rule)'";
             } else {
-                my $xpath = selector_to_xpath($sub_rule);
-                $xpath =~ s!^//!!;
+                my( $new_parts, $leftover ) = $self->consume( $rule, %parms );
+                shift @$new_parts; # remove '//'
+                my $xpath = join '', @$new_parts;
+                
                 push @parts, "[not(self::$xpath)]";
+                $rule = $leftover;
             }
+            $rule =~ s!^\s*\)!!
+                or die "Unbalanced parentheses at '$rule'";
         }
 
         # Ignore pseudoclasses/pseudoelements
@@ -253,7 +259,19 @@ sub to_xpath {
             undef $wrote_tag;
         }
     }
-    return join '', @parts;
+    return \@parts, $rule
+}
+
+sub to_xpath {
+    my $self = shift;
+    my $rule = $self->{expression} or return;
+    my %parms = @_;
+    
+    my($result,$leftover) = $self->consume( $rule, %parms );
+    $leftover
+        and die "Invalid rule, couldn't parse '$leftover'";
+    return join '', @$result;
+
 }
 
 sub parse_pseudo { 
