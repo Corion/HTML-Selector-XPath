@@ -13,3 +13,4 @@
 \.releaserc
 \.shipit
 ^MYMETA\..*
+^HTML-Selector-XPath-*

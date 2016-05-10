@@ -1,6 +1,11 @@
 Revision history for Perl extension HTML::Selector::XPath
 
-0.19 NEXT
+0.20 NEXT
+
+0.19 Tue May 10 19:23:00 GMT+2 2016
+      - Fix another bug in ':not(...)' by moving to an ad-hoc recursive
+        descent parser, RT #114261
+      - Allow single and double quotes for some attributes
 
 0.18 Sat Aug 30 16:32:35 2014      - Fix bug in `:not(...)[attr] (Aaron Crane)
       - Support `:nth-child(odd)` and `:nth-child(even)` (Aaron Crane)
