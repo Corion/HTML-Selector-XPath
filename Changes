@@ -1,6 +1,10 @@
 Revision history for Perl extension HTML::Selector::XPath
 
-0.20 NEXT
+0.21 NEXT
+
+0.20 Thu May 12 21:11:00 GMT+2 2016
+      - Fix //b by interpreting it as existing XPath expression
+        RT #114345, reported by Alexander Hartmaier
 
 0.19 Tue May 10 19:23:00 GMT+2 2016
       - Fix another bug in ':not(...)' by moving to an ad-hoc recursive

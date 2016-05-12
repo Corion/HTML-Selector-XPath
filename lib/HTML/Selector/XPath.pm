@@ -103,6 +103,8 @@ sub consume {
     my ($self, $rule, %parms) = @_;
     my $root = $parms{root} || '/';
 
+    return [$rule,''] if $rule =~ m!^/!; # If we start with a slash, we're already an XPath?!
+
     my @parts = ("$root/");
     my $last_rule = '';
     my @next_parts;
