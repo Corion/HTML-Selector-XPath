@@ -2,7 +2,7 @@ Revision history for Perl extension HTML::Selector::XPath
 
 0.23 NEXT
 
-0.22 Fri Sep 23 21:35:00 GMT+2 2016
+0.22 20160923 (Fri Sep 23 21:35:00 GMT+2 2016)
       - seems as if "provides" in META.json must be a full path to the file...
       . No code changes, no need to upgrade
 
