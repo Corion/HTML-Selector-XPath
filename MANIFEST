@@ -22,6 +22,7 @@ t/05_xpath_prefix.t
 t/06_rt114261.t
 t/07_rt114345.t
 t/99_pod.t
+xt/99-changes.t
 xt/99-manifest.t
 xt/99-pod.t
 xt/99-unix-text.t
