@@ -1,0 +1,52 @@
+{
+   "abstract" : "CSS Selector to XPath compiler",
+   "author" : [
+      "Max Maischein <corion@cpan.org>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "ExtUtils::MakeMaker version 7.1, CPAN::Meta::Converter version 2.150010",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "HTML-Selector-XPath",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "inc"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::Base" : "0",
+            "Test::More" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {}
+      }
+   },
+   "provides" : {
+      "HTML::Selector::XPath" : {
+         "file" : "XPath.pm",
+         "x_VERSION_FROM" : "lib/HTML/Selector/XPath.pm"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "repository" : {
+         "url" : "https://github.com/Corion/HTML-Selector-XPath"
+      }
+   },
+   "version" : "0.20",
+   "x_serialization_backend" : "JSON::PP version 2.27300"
+}

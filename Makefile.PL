@@ -1,9 +1,24 @@
-use inc::Module::Install;
-name 'HTML-Selector-XPath';
-all_from 'lib/HTML/Selector/XPath.pm';
+use ExtUtils::MakeMaker qw(WriteMakefile);
 
-build_requires 'Test::More';
-build_requires 'Test::Base';
-
-repository 'https://github.com/Corion/HTML-Selector-XPath';
-WriteAll;
+WriteMakefile(
+    NAME            => 'HTML::Selector::XPath',
+    VERSION_FROM    => 'lib/HTML/Selector/XPath.pm',
+    ABSTRACT_FROM   => 'lib/HTML/Selector/XPath.pm',
+    META_MERGE => {
+        resources => {
+            repository => 'https://github.com/Corion/HTML-Selector-XPath',
+        },
+        provides => {
+            'HTML::Selector::XPath' => {
+                file => 'XPath.pm',
+                VERSION_FROM    => 'lib/HTML/Selector/XPath.pm'
+            }
+        }
+    },
+    BUILD_REQUIRES => {
+        'Test::More' => 0,
+        'Test::Base' => 0
+    },
+    AUTHOR         => 'Max Maischein <corion@cpan.org>',
+    LICENSE        => 'perl'
+);
