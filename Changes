@@ -1,6 +1,9 @@
 Revision history for Perl extension HTML::Selector::XPath
 
-0.21 NEXT
+0.22 NEXT
+
+0.21 Fri Sep 23 17:38:00 GMT+2 2016
+      - add META.json, added by Lisa Hare
 
 0.20 Thu May 12 21:11:00 GMT+2 2016
       - Fix //b by interpreting it as existing XPath expression

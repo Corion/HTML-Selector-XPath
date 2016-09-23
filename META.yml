@@ -25,4 +25,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: https://github.com/Corion/HTML-Selector-XPath
-version: 0.20
+version: 0.21
