@@ -10,7 +10,7 @@ WriteMakefile(
         },
         provides => {
             'HTML::Selector::XPath' => {
-                file => 'XPath.pm',
+                file => 'lib/HTML/Selector/XPath.pm',
                 VERSION_FROM    => 'lib/HTML/Selector/XPath.pm'
             }
         }
