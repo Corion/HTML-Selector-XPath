@@ -19,6 +19,10 @@ WriteMakefile(
         'Test::More' => 0,
         'Test::Base' => 0
     },
+    'PREREQ_PM'    => { 'strict'      => 0,
+                        'Exporter'    => 0,
+                        'Carp'        => 0,
+    }, # e.g., Module::Name => 1.1
     AUTHOR         => 'Max Maischein <corion@cpan.org>',
     LICENSE        => 'perl'
 );
