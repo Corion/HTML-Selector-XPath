@@ -2,7 +2,7 @@ Revision history for Perl extension HTML::Selector::XPath
 
 0.24 NEXT
 
-0.22 20160923 (Thu Mar 23 19:35:00 GMT+1 2017)
+0.23 20170323 (Thu Mar 23 19:35:00 GMT+1 2017)
       - seems as if "provides" in META.json makes new versions not get indexed
         properly
       . No code changes, no need to upgrade
