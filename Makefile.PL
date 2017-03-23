@@ -5,15 +5,24 @@ WriteMakefile(
     VERSION_FROM    => 'lib/HTML/Selector/XPath.pm',
     ABSTRACT_FROM   => 'lib/HTML/Selector/XPath.pm',
     META_MERGE => {
+        "meta-spec" => { version => 2 },
         resources => {
-            repository => 'https://github.com/Corion/HTML-Selector-XPath',
+            repository => {
+                web => 'https://github.com/Corion/HTML-Selector-XPath',
+                url => 'git://github.com/Corion/HTML-Selector-XPath.git',
+                type => 'git',
+            },
+            bugtracker => 'http://rt.cpan.org/Public/Dist/Display.html?Name=HTML-Selector-XPath',
+            license    => 'http://dev.perl.org/licenses/',
         },
-        provides => {
-            'HTML::Selector::XPath' => {
-                file => 'lib/HTML/Selector/XPath.pm',
-                VERSION_FROM    => 'lib/HTML/Selector/XPath.pm'
-            }
-        }
+        dynamic_config   => 0, # we promise to keep META.* up-to-date
+        x_static_install => 1, # we are pure Perl and don't do anything fancy
+        #provides => {
+        #    'HTML::Selector::XPath' => {
+        #        file => 'lib/HTML/Selector/XPath.pm',
+        #        version => 'lib/HTML/Selector/XPath.pm',
+        #    }
+        #}
     },
     BUILD_REQUIRES => {
         'Test::More' => 0,
