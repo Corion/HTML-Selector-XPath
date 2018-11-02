@@ -25,8 +25,12 @@ my %module = (
         #}
     },
     BUILD_REQUIRES => {
+        'ExtUtils::MakeMaker' => 0,
+    },
+    TEST_REQUIRES => {
         'Test::More' => 0,
-        'Test::Base' => 0
+        'Test::Base' => 0,
+        'Encode'     => 0,
     },
     'PREREQ_PM'    => { 'strict'      => 0,
                         'Exporter'    => 0,

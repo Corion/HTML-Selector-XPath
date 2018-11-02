@@ -4,13 +4,13 @@
       "Max Maischein <corion@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 7.24, CPAN::Meta::Converter version 2.143240",
+   "generated_by" : "ExtUtils::MakeMaker version 7.34, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "HTML-Selector-XPath",
    "no_index" : {
@@ -22,8 +22,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::Base" : "0",
-            "Test::More" : "0"
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "configure" : {
@@ -36,6 +35,13 @@
             "Carp" : "0",
             "Exporter" : "0",
             "strict" : "0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Encode" : "0",
+            "Test::Base" : "0",
+            "Test::More" : "0"
          }
       }
    },
@@ -50,6 +56,7 @@
          "web" : "https://github.com/Corion/HTML-Selector-XPath"
       }
    },
-   "version" : "0.23",
+   "version" : "0.24",
+   "x_serialization_backend" : "JSON::PP version 2.97001",
    "x_static_install" : 1
 }
