@@ -1,6 +1,6 @@
 use ExtUtils::MakeMaker qw(WriteMakefile);
 
-WriteMakefile(
+my %module = (
     NAME            => 'HTML::Selector::XPath',
     VERSION_FROM    => 'lib/HTML/Selector/XPath.pm',
     ABSTRACT_FROM   => 'lib/HTML/Selector/XPath.pm',
@@ -35,3 +35,11 @@ WriteMakefile(
     AUTHOR         => 'Max Maischein <corion@cpan.org>',
     LICENSE        => 'perl'
 );
+
+sub get_module_info { %module }
+
+if( ! caller ) {
+    WriteMakefile(get_module_info);
+};
+
+1;
